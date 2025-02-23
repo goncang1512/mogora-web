@@ -1,0 +1,32 @@
+"use client";
+import { Sheet } from "mogora-ui";
+import Link from "next/link";
+import React from "react";
+import { AlignLeft } from "lucide-react";
+
+function Mobilebar() {
+  return (
+    <div className="bg-white border-b border-gray-300 h-14 z-50 w-full fixed top-0">
+      <div className="flex items-center md:justify-start justify-between gap-5 h-full px-5">
+        <Link href={"/"} className="font-bold text-xl">
+          Mogora UI
+        </Link>
+        <div className="gap-2 items-center md:flex hidden">
+          <Link href={"/docs"}>Docs</Link>
+          <Link href="/component">Component</Link>
+          <Link href={"/"}>Template</Link>
+        </div>
+        <Sheet>
+          <Sheet.Trigger className="cursor-pointer md:hidden flex">
+            <AlignLeft />
+          </Sheet.Trigger>
+          <Sheet.Content className="bg-white opacity-100 w-[70%]">
+            <h1>Goncang</h1>
+          </Sheet.Content>
+        </Sheet>
+      </div>
+    </div>
+  );
+}
+
+export default Mobilebar;

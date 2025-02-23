@@ -6,7 +6,7 @@ function Register() {
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="bg-white max-w-md w-full border border-gray-200 shadow-md p-4 rounded-md">
-        <h1 className="font-semibold text-center pb-3">Register</h1>
+        <h1 className="font-semibold text-center">Register</h1>
         <Form />
       </div>
     </div>

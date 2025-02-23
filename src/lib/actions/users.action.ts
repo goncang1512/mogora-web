@@ -25,22 +25,29 @@ export const createUser = async (formData: FormData): Promise<ResponseType> => {
 
   const sql = `
   INSERT INTO users
-      (name, email, password)
+      (username, email, password, avatar, avatar_id, role)
       VALUES
-      ($1, $2, $3)
+      ($1, $2, $3, $4, $5, $6)
       RETURNING *;
 `;
 
   try {
     if (!name || !email || !password || !confirm) {
-      throw new CustomError("Invalid data", 422);
+      throw new CustomError("Invalid data. Try again.", 422);
     }
 
     if (password !== confirm) {
       throw new CustomError("Invalid password", 422);
     }
 
-    const results = await query(sql, [name, email, password]);
+    const results = await query(sql, [
+      name,
+      email,
+      password,
+      "default",
+      "default_id",
+      "Reguler",
+    ]);
     return {
       status: true,
       statusCode: 201,
