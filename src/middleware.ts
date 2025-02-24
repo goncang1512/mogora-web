@@ -4,13 +4,13 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname === "/component") {
-    return NextResponse.redirect(new URL("/component/accordion", request.url));
+  if (pathname === "/components") {
+    return NextResponse.redirect(new URL("/components/accordion", request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/component"],
+  matcher: ["/components"],
 };

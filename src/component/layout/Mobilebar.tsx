@@ -3,6 +3,7 @@ import { Sheet } from "mogora-ui";
 import Link from "next/link";
 import React from "react";
 import { AlignLeft } from "lucide-react";
+import { ComponentLink } from "./SideLayout/ComponentSide";
 
 function Mobilebar() {
   return (
@@ -13,7 +14,7 @@ function Mobilebar() {
         </Link>
         <div className="gap-2 items-center md:flex hidden">
           <Link href={"/docs"}>Docs</Link>
-          <Link href="/component">Component</Link>
+          <Link href="/components">Components</Link>
           <Link href={"/"}>Template</Link>
         </div>
         <Sheet>
@@ -21,7 +22,13 @@ function Mobilebar() {
             <AlignLeft />
           </Sheet.Trigger>
           <Sheet.Content className="bg-white opacity-100 w-[70%]">
-            <h1>Goncang</h1>
+            <div className="gap-2 items-start flex flex-col">
+              <Link href={"/docs"}>Docs</Link>
+              <Link href="/components">Components</Link>
+              <Link href={"/"}>Template</Link>
+            </div>
+            <h1 className="text-base font-bold pt-5">Components</h1>
+            <ComponentLink />
           </Sheet.Content>
         </Sheet>
       </div>
