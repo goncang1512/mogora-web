@@ -10,7 +10,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex">
         <ComponentSide />
         <Mobilebar />
-        <div className="flex-1 min-h-screen pl-0 md:pl-64 pt-14">
+        <div className="flex-1 min-h-screen pl-0 md:pl-72 pt-14 overflow-x-hidden">
           {children}
         </div>
         <div className="flex-none w-[30%] md:flex hidden"></div>

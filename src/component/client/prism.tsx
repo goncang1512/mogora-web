@@ -8,7 +8,7 @@ import "@/lib/code.css";
 export const CodeBlock = ({ children }: { children: string }) => {
   useEffect(() => {
     Prism.highlightAll();
-  }, []);
+  }, [children]);
 
   return (
     <pre
