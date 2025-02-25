@@ -10,7 +10,7 @@ const tabsCode = (variant: string) => {
   const TabsCode: string = `
 import { Tabs } from "mogora-ui";
 
-export default function AccordionDemo() {
+export default function TabsDemo() {
   return (
     <Tabs variant={"${variant}"} defaultValue="item-1" className="flex flex-col w-lg">
       <Tabs.List className="grid grid-cols-2">
@@ -52,7 +52,7 @@ function TabsPage() {
 
   return (
     <Container>
-      <h1 className="text-3xl font-semibold">Accordion</h1>
+      <h1 className="text-3xl font-semibold">Tabs</h1>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">

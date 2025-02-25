@@ -32,7 +32,7 @@ function ModalPage() {
   const { copyToClipboard, copy } = useGlobal();
   return (
     <Container>
-      <h1 className="text-3xl font-semibold">Button</h1>
+      <h1 className="text-3xl font-semibold">Modal</h1>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
