@@ -1,2 +1,22 @@
 @import "mogora-ui/style.css";
 @import "tailwindcss";
+
+.scroll-bar::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.scroll-bar::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+.scroll-bar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}

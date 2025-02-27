@@ -1,11 +1,22 @@
 "use client";
-import { useEffect } from "react";
+import React, { HTMLAttributes, useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-jsx";
 import "@/lib/code.css";
+import { twClass } from "mogora-ui";
 
-export const CodeBlock = ({ children }: { children: string }) => {
+interface codeBlokProps extends HTMLAttributes<HTMLPreElement> {
+  children: React.ReactNode;
+  language?: string;
+}
+
+export const CodeBlock = ({
+  children,
+  className,
+  language = "language-jsx",
+  ...props
+}: codeBlokProps) => {
   useEffect(() => {
     Prism.highlightAll();
   }, [children]);
@@ -13,9 +24,13 @@ export const CodeBlock = ({ children }: { children: string }) => {
   return (
     <pre
       suppressHydrationWarning
-      className="w-full h-[60vh] overflow-auto px-2 rounded-md"
+      className={twClass(
+        "w-full h-[60vh] overflow-auto px-2 rounded-md",
+        className
+      )}
+      {...props}
     >
-      <code className="language-jsx">{children}</code>
+      <code className={language}>{children}</code>
     </pre>
   );
 };

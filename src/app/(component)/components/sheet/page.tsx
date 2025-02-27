@@ -15,7 +15,7 @@ export default function SheetDemo() {
       <Sheet.Trigger>
         <Button variant={"clicki"}>Sheet</Button>
       </Sheet.Trigger>
-      <Sheet.Content className="w-72 flex flex-col gap-2">
+      <Sheet.Content position="left" className="w-72 flex flex-col gap-2">
         <h1 className="text-start font-bold w-full">Account</h1>
         <p className="text-sm leading-4 font-medium text-slate-500">
           Make changes to your account here. Click save when you're done.
@@ -51,7 +51,7 @@ function SheetPage() {
             <Sheet.Trigger>
               <Button variant={"clicki"}>Sheet</Button>
             </Sheet.Trigger>
-            <Sheet.Content className="w-72 flex flex-col gap-2">
+            <Sheet.Content position="left" className="w-72 flex flex-col gap-2">
               <h1 className="text-start font-bold w-full">Account</h1>
               <p className="text-sm leading-4 font-medium text-slate-500">
                 Make changes to your account here. Click save when you&apos;re

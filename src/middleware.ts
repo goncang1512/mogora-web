@@ -6,11 +6,13 @@ export function middleware(request: NextRequest) {
 
   if (pathname === "/components") {
     return NextResponse.redirect(new URL("/components/accordion", request.url));
+  } else if (pathname === "/docs") {
+    return NextResponse.redirect(new URL("/docs/introduction", request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/components"],
+  matcher: ["/components", "/docs"],
 };

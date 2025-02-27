@@ -8,7 +8,7 @@ import React, { useState } from "react";
 
 const tabsCode = (variant: string) => {
   const TabsCode: string = `
-import { Tabs } from "mogora-ui";
+import { Tabs, Input } from "mogora-ui";
 
 export default function TabsDemo() {
   return (

@@ -11,8 +11,8 @@ import { Avatar } from "mogora-ui";
 
 export default function ToggleDemo() {
   return (
-    <Toggle>
-      <EllipsisVertical />
+    <Toggle className="size-10">
+      <EllipsisVertical size={30} />
     </Toggle>
   )
 }
@@ -37,8 +37,8 @@ function TogglePage() {
           className="w-full flex items-center justify-center border border-gray-300 p-3 rounded-md mt-3 h-[60vh] overflow-auto"
         >
           {/* COPONENT */}
-          <Toggle>
-            <EllipsisVertical />
+          <Toggle className="size-10">
+            <EllipsisVertical size={30} />
           </Toggle>
         </Tabs.Content>
         <Tabs.Content
