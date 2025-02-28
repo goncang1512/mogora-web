@@ -46,3 +46,10 @@ pre[class*="language-"] {
 .token.punctuation {
   color: #96c0f1;
 }
+
+/* Menghilangkan garis tipis di sebelah kiri */
+.command-line .command-line-prompt {
+  border-right: none !important;
+  padding-right: 0 !important;
+  width: 0px !important;
+}

@@ -15,7 +15,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.8",
     "lucide-react": "^0.475.0",
-    "mogora-ui": "^0.3.11",
+    "mogora-ui": "^0.4.11",
     "next": "15.1.7",
     "pg": "^8.13.3",
     "prisma": "^6.4.1",

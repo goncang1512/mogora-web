@@ -16,7 +16,7 @@ import { Input } from "mogora-ui";
 export default function InputDemo() {
   return (
     <div>
-      <Input placeholder="goncang" variant={"${variant}"} theme={"${theme}"} className="w-sm" />
+      <Input placeholder="Username" variant={"${variant}"} theme={"${theme}"} className="w-sm" />
     </div>
   )
 }
@@ -61,7 +61,7 @@ function InputPage() {
         >
           {/* COPONENT */}
           <Input
-            placeholder="goncang"
+            placeholder="Username"
             variant={variant}
             theme={theme}
             className="w-sm"

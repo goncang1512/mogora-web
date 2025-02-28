@@ -2,21 +2,20 @@
 import React, { HTMLAttributes, useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/components/prism-jsx";
+import "prismjs/plugins/command-line/prism-command-line.css";
+import "prismjs/plugins/command-line/prism-command-line.js";
 import "@/lib/styles/code.css";
 import { twClass } from "mogora-ui";
 
-interface codeBlokProps extends HTMLAttributes<HTMLPreElement> {
+interface TerminalBlockProps extends HTMLAttributes<HTMLPreElement> {
   children: React.ReactNode;
-  language?: string;
 }
 
-export const CodeBlock = ({
+export const TerminalBlock = ({
   children,
   className,
-  language = "language-jsx",
   ...props
-}: codeBlokProps) => {
+}: TerminalBlockProps) => {
   useEffect(() => {
     Prism.highlightAll();
   }, [children]);
@@ -25,12 +24,13 @@ export const CodeBlock = ({
     <pre
       suppressHydrationWarning
       className={twClass(
-        "w-full h-[60vh] overflow-auto px-2 rounded-md",
+        "command-line w-full h-[60vh] overflow-auto px-4 py-3 rounded-md bg-black text-white",
         className
       )}
+      data-prompt="$"
       {...props}
     >
-      <code className={language}>{children}</code>
+      <code className="language-bash">{children}</code>
     </pre>
   );
 };

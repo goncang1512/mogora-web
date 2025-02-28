@@ -45,7 +45,7 @@ export default function TableDemo() {
   return tableCode;
 };
 
-const variants = ["default", "zebra"] as const;
+const variants = ["default", "zebra", "bordered"] as const;
 const sortedVariants = [...variants].sort();
 
 function TablePage() {

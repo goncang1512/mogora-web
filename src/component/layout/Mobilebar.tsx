@@ -11,9 +11,14 @@ function Mobilebar() {
   return (
     <div className="bg-white border-b border-gray-300 h-14 z-50 w-full fixed top-0">
       <div className="flex items-center md:justify-start justify-between gap-5 h-full px-5">
-        <Link href={"/"} className="font-bold text-xl">
-          Mogora UI
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link href={"/"} className="font-bold text-xl">
+            Mogora UI
+          </Link>
+          <span className="bg-gray-300  px-1 rounded-md text-xs font-mono">
+            v0.4
+          </span>
+        </div>
         <div className="gap-2 items-center md:flex hidden">
           {pathname === "/" && (
             <>
