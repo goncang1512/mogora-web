@@ -4,7 +4,7 @@ import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard } from "lucide-react";
-import { Badge, Button, Table, Tabs } from "mogora-ui";
+import { Badge, Select, Table, Tabs } from "mogora-ui";
 import React, { useState } from "react";
 
 const badgeCode = (variant: string) => {
@@ -63,19 +63,24 @@ function BadgePage() {
           </div>
           <CodeBlock>{badgeCode(theme)}</CodeBlock>
         </Tabs.Content>
-        <div className="flex gap-3 flex-col">
-          <h1 className="font-semibold">Variants</h1>
-          <div className="flex gap-3">
-            {variants.map((name, index) => (
-              <Button
-                key={index}
-                onClick={() => setTheme(name)}
-                className="capitalize"
-              >
-                {name}
-              </Button>
-            ))}
-          </div>
+        <div className="w-sm pt-4">
+          <Select>
+            <Select.Trigger className="capitalize flex justify-between items-center">
+              Variants
+            </Select.Trigger>
+            <Select.Content>
+              {variants.map((name) => (
+                <Select.Item
+                  key={name}
+                  onClick={() => setTheme(name)}
+                  value={name}
+                  className="capitalize"
+                >
+                  {name}
+                </Select.Item>
+              ))}
+            </Select.Content>
+          </Select>
         </div>
       </Tabs>
       <ApiAccordion />
@@ -96,7 +101,7 @@ const ApiAccordion = () => {
         <Table variant={"bordered"}>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Prop</Table.HeaderCell>
               <Table.HeaderCell>Type</Table.HeaderCell>
               <Table.HeaderCell>Description</Table.HeaderCell>
             </Table.Row>
@@ -128,7 +133,7 @@ const ApiAccordion = () => {
 
       <div className="flex flex-col gap-3">
         <SubTitle>Varian Badge</SubTitle>
-        <Table>
+        <Table variant={"bordered"}>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Variant</Table.HeaderCell>

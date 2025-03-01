@@ -112,6 +112,46 @@ function ButtonPage() {
   );
 }
 
+const jsonData = [
+  {
+    prop: "variant",
+    type:
+      sortedComponentsLinks
+        ?.map((value, index) =>
+          index + 1 === sortedComponentsLinks.length
+            ? `"${value}"`
+            : `"${value}" | `
+        )
+        .join("") || "",
+    description: "Defines the visual style of the button.",
+  },
+  {
+    prop: "size",
+    type:
+      sizeSorted
+        ?.map((value, index) =>
+          index + 1 === sizeSorted.length ? `"${value}"` : `"${value}" | `
+        )
+        .join("") || "",
+    description: "Defines the size of the button.",
+  },
+  {
+    prop: "children",
+    type: "ReactNode",
+    description: "The content inside the button.",
+  },
+  {
+    prop: "className",
+    type: "string",
+    description: "Additional custom classes.",
+  },
+  {
+    prop: "...props",
+    type: "ButtonHTMLAttributes<HTMLButtonElement>",
+    description: "Accepts standard button attributes.",
+  },
+];
+
 const ApiAccordion = () => {
   return (
     <div className="flex flex-col pb-10 pt-5">
@@ -122,50 +162,29 @@ const ApiAccordion = () => {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Prop</Table.HeaderCell>
-              <Table.HeaderCell className="w-[100px]">Type</Table.HeaderCell>
+              <Table.HeaderCell>Type</Table.HeaderCell>
               <Table.HeaderCell>Description</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            <Table.Row>
-              <Table.Cell>variant</Table.Cell>
-              <Table.Cell>
-                {sortedComponentsLinks?.map((value, index) =>
-                  index + 1 === sortedComponentsLinks.length
-                    ? `"${value}"`
-                    : `"${value}" | `
-                )}
-              </Table.Cell>
-              <Table.Cell>Defines the visual style of the button.</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>size</Table.Cell>
-              <Table.Cell>
-                {sizeSorted?.map((value: string, index: number) =>
-                  index + 1 === sizeSorted.length
-                    ? `"${value}"`
-                    : `"${value}" | `
-                )}
-              </Table.Cell>
-              <Table.Cell>Defines the size of the button.</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>children</Table.Cell>
-              <Table.Cell>ReactNode</Table.Cell>
-              <Table.Cell>The content inside the button.</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>className</Table.Cell>
-              <Table.Cell>string</Table.Cell>
-              <Table.Cell>Additional custom classes.</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>...props</Table.Cell>
-              <Table.Cell>
-                ButtonHTMLAttributes&lt;HTMLButtonElement&gt;
-              </Table.Cell>
-              <Table.Cell>Accepts standard button attributes.</Table.Cell>
-            </Table.Row>
+            {jsonData.map((value) => (
+              <Table.Row key={value.prop}>
+                <Table.Cell>{value.prop}</Table.Cell>
+                <Table.Cell
+                  className="max-sm:max-w-[100px] w-[100px] max-sm:truncate"
+                  title={
+                    typeof value.type === "function"
+                      ? (value.type as () => string)()
+                      : value.type ?? "Unknown"
+                  }
+                >
+                  {typeof value.type === "function"
+                    ? (value.type as () => string)()
+                    : value.type ?? "Unknown"}
+                </Table.Cell>
+                <Table.Cell>{value.description}</Table.Cell>
+              </Table.Row>
+            ))}
           </Table.Body>
         </Table>
       </div>

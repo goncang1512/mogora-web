@@ -137,7 +137,7 @@ function InstallationPage() {
         <div>
           <SubTitle className="text-xl">Notes</SubTitle>
 
-          <ul className="list-disc">
+          <ul className="list-disc pl-4.5">
             <li>
               <p>
                 <span className="font-semibold">React.js v19</span>

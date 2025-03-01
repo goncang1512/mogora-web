@@ -1,9 +1,10 @@
 "use client";
 import { CodeBlock } from "@/component/client/prism";
+import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard, EllipsisVertical } from "lucide-react";
-import { Card, Popover, Tabs } from "mogora-ui";
+import { Card, Popover, Table, Tabs } from "mogora-ui";
 import React from "react";
 
 const SheetCode: string = `
@@ -48,11 +49,143 @@ export default function CardDemo() {
 }
 `;
 
+const contentApiReferences = [
+  {
+    title: "Card",
+    description: "The main wrapper component for other sub-components.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+    ],
+  },
+  {
+    title: "Card.Picture",
+    description: "Displays an image inside the card.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+      {
+        prop: "...props",
+        type: "ImgHTMLAttributes<HTMLImageElement>",
+        description: "Inherits all default attributes of the <img>",
+      },
+    ],
+  },
+  {
+    title: "Card.Header",
+    description: "The top section of the card, usually containing the title.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Elements inside the header.",
+      },
+      {
+        prop: "...props",
+        type: "HTMLAttributes<HTMLDivElement>",
+        description: "Inherits all default attributes of the <div>",
+      },
+    ],
+  },
+  {
+    title: "Card.Title",
+    description: "Displays the title inside the card.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Title text or elements.",
+      },
+    ],
+  },
+  {
+    title: "Card.Description",
+    description: "Displays a description or additional text inside the card.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Description text.",
+      },
+    ],
+  },
+  {
+    title: "Card.Content",
+    description: "The main section of the card for primary content.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Elements inside the content.",
+      },
+    ],
+  },
+  {
+    title: "Card.Footer",
+    description:
+      "The bottom section of the card, usually containing buttons or additional information.",
+    props: [
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional styling classes.",
+      },
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Elements inside the footer.",
+      },
+    ],
+  },
+];
+
 function CardPage() {
   const { copyToClipboard, copy } = useGlobal();
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Card</h1>
+      <SubTitle>Description</SubTitle>
+      <div className="flex flex-col gap-3">
+        <p>
+          The <HightLight>Card</HightLight> component is a part of a UI library
+          built with React and Tailwind CSS. This component is designed to
+          display content in a flexible and customizable card format.
+        </p>
+        <p>
+          The <HightLight>Card</HightLight> component supports various
+          sub-components such as
+          <HightLight>Picture</HightLight>, <HightLight>Header</HightLight>,{" "}
+          <HightLight>Title</HightLight>, <HightLight>Description</HightLight>,{" "}
+          <HightLight>Content</HightLight>, and <HightLight>Footer</HightLight>,
+          allowing users to structure the card layout easily.
+        </p>
+      </div>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -117,8 +250,55 @@ function CardPage() {
           <CodeBlock>{SheetCode}</CodeBlock>
         </Tabs.Content>
       </Tabs>
+      <ApiAccordion />
     </Container>
   );
 }
+
+const ApiAccordion = () => {
+  return (
+    <div className="flex flex-col pb-10 pt-5">
+      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      {contentApiReferences.map((data) => {
+        return (
+          <div key={data?.title} className="flex flex-col gap-3">
+            <SubTitle>{data?.title}</SubTitle>
+            <p>{data?.description}</p>
+            <Table variant={"bordered"}>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Prop</Table.HeaderCell>
+                  <Table.HeaderCell className="md:w-[100px]">
+                    Type
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>Description</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {data?.props.map((value, index) => (
+                  <Table.Row key={index}>
+                    <Table.Cell>{value.prop}</Table.Cell>
+                    <Table.Cell
+                      className="max-sm:max-w-[100px] max-sm:truncate"
+                      title={value.type}
+                    >
+                      {value.type}
+                    </Table.Cell>
+                    <Table.Cell>{value.description}</Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          </div>
+        );
+      })}
+
+      <p className="pt-5">
+        By using the Card component, you can create elegant and easily
+        customizable card layouts for your React application.
+      </p>
+    </div>
+  );
+};
 
 export default CardPage;
