@@ -83,7 +83,7 @@ function TextareaPage() {
           <CodeBlock>{textareFunction(variant, theme)}</CodeBlock>
         </Tabs.Content>
         <div className="flex gap-3 flex-col">
-          <div className="w-lg gap-3 pt-4 flex">
+          <div className="w-full md:w-lg gap-3 pt-4 flex">
             <Select>
               <Select.Trigger className="capitalize flex justify-between items-center">
                 Themes

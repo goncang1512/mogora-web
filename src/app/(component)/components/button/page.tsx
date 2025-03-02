@@ -86,7 +86,7 @@ function ButtonPage() {
         </Tabs.Content>
         <div className="flex gap-3 flex-col">
           <h1 className="font-semibold hidden">Variants</h1>
-          <div className="w-sm pt-4">
+          <div className="w-full md:w-sm pt-4">
             <Select>
               <Select.Trigger className="capitalize flex justify-between items-center">
                 Variants
@@ -171,7 +171,7 @@ const ApiAccordion = () => {
               <Table.Row key={value.prop}>
                 <Table.Cell>{value.prop}</Table.Cell>
                 <Table.Cell
-                  className="max-sm:max-w-[100px] w-[100px] max-sm:truncate"
+                  className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal"
                   title={
                     typeof value.type === "function"
                       ? (value.type as () => string)()

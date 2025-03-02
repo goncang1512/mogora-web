@@ -279,7 +279,7 @@ const ApiAccordion = () => {
                   <Table.Row key={index}>
                     <Table.Cell>{value.prop}</Table.Cell>
                     <Table.Cell
-                      className="max-sm:max-w-[100px] max-sm:truncate"
+                      className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal"
                       title={value.type}
                     >
                       {value.type}

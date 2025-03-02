@@ -127,7 +127,7 @@ function CheckboxPage() {
           <CodeBlock>{checkboxCode(theme)}</CodeBlock>
         </Tabs.Content>
         <div className="flex gap-3 flex-col">
-          <div className="w-sm pt-4">
+          <div className="w-full md:w-sm pt-4">
             <Select>
               <Select.Trigger className="capitalize flex justify-between items-center">
                 Variants

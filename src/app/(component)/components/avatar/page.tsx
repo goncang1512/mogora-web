@@ -92,14 +92,18 @@ const ApiAccordion = () => {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Prop</Table.HeaderCell>
-              <Table.HeaderCell>Type</Table.HeaderCell>
+              <Table.HeaderCell className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal">
+                Type
+              </Table.HeaderCell>
               <Table.HeaderCell>Description</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             <Table.Row>
               <Table.Cell>src</Table.Cell>
-              <Table.Cell>string</Table.Cell>
+              <Table.Cell className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal">
+                string
+              </Table.Cell>
               <Table.Cell>Avatar image URL.</Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -116,7 +120,9 @@ const ApiAccordion = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell>...props</Table.Cell>
-              <Table.Cell>ImgHTMLAttributes&lt;HTMLImageElement&gt;</Table.Cell>
+              <Table.Cell className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal">
+                ImgHTMLAttributes&lt;HTMLImageElement&gt;
+              </Table.Cell>
               <Table.Cell>
                 Additional properties for the &lt;img&gt; element.
               </Table.Cell>

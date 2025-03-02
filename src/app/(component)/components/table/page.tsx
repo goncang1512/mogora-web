@@ -110,7 +110,7 @@ function TablePage() {
           </div>
           <CodeBlock>{tableFunction(variant)}</CodeBlock>
         </Tabs.Content>
-        <div className="w-lg gap-3 pt-4 flex">
+        <div className="w-full md:w-sm gap-3 pt-4 flex">
           <Select>
             <Select.Trigger className="capitalize flex justify-between items-center">
               Variants

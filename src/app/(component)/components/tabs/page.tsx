@@ -3,7 +3,7 @@ import { CodeBlock } from "@/component/client/prism";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard } from "lucide-react";
-import { Button, Card, Input, Tabs } from "mogora-ui";
+import { Card, Input, Select, Tabs } from "mogora-ui";
 import React, { useState } from "react";
 
 const tabsCode = (variant: string) => {
@@ -132,19 +132,24 @@ function TabsPage() {
           </div>
           <CodeBlock>{tabsCode(theme)}</CodeBlock>
         </Tabs.Content>
-        <div className="flex gap-3 flex-col">
-          <h1 className="font-semibold">Variants</h1>
-          <div className="flex gap-3">
-            {variants.map((name, index) => (
-              <Button
-                key={index}
-                onClick={() => setTheme(name)}
-                className="capitalize"
-              >
-                {name}
-              </Button>
-            ))}
-          </div>
+        <div className="w-full md:w-sm flex gap-3">
+          <Select>
+            <Select.Trigger className="capitalize flex justify-between items-center">
+              Variants
+            </Select.Trigger>
+            <Select.Content>
+              {variants.map((name) => (
+                <Select.Item
+                  key={name}
+                  onClick={() => setTheme(name)}
+                  value={name}
+                  className="capitalize"
+                >
+                  {name}
+                </Select.Item>
+              ))}
+            </Select.Content>
+          </Select>
         </div>
       </Tabs>
     </Container>

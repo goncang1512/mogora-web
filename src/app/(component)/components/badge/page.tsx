@@ -63,7 +63,7 @@ function BadgePage() {
           </div>
           <CodeBlock>{badgeCode(theme)}</CodeBlock>
         </Tabs.Content>
-        <div className="w-sm pt-4">
+        <div className="w-full md:w-sm pt-4">
           <Select>
             <Select.Trigger className="capitalize flex justify-between items-center">
               Variants
