@@ -34,6 +34,7 @@ function BadgePage() {
         The <span className="bg-gray-200 px-2 rounded-md">Badge</span> component
         is used to display a small badge with various style variants.
       </p>
+      <SubTitle>Usage</SubTitle>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -91,7 +92,7 @@ function BadgePage() {
 const ApiAccordion = () => {
   return (
     <div className="flex flex-col gap-3 pb-10">
-      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       <div className="flex flex-col gap-3">
         <SubTitle>Badge</SubTitle>
         <p className="font-medium font-poppins">

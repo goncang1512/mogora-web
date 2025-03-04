@@ -37,6 +37,7 @@ function SelectPage() {
         and is designed with flexibility in mind, supporting different styles
         and behaviors.
       </p>
+      <SubTitle>Usage</SubTitle>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -184,7 +185,8 @@ const APIREFERENCES = [
 
 const ApiComponent = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       {APIREFERENCES.map((data) => (
         <div key={data.title}>
           <SubTitle>{data.title}</SubTitle>

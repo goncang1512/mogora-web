@@ -112,7 +112,7 @@ function AccordionPage() {
 const ApiAccordion = () => {
   return (
     <div className="flex flex-col gap-3">
-      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       <div className="flex flex-col gap-3">
         <SubTitle>Accordion</SubTitle>
         <p className="font-medium font-poppins">

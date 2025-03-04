@@ -31,6 +31,7 @@ function AvatarPage() {
         component is a component used to display an avatar image with a fallback
         in case of an error while loading the image.
       </p>
+      <SubTitle>Usage</SubTitle>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -74,7 +75,7 @@ function AvatarPage() {
 const ApiAccordion = () => {
   return (
     <div className="flex flex-col gap-3 pb-10">
-      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       <div className="flex flex-col gap-3">
         <SubTitle>Avatar</SubTitle>
         <p className="font-medium font-poppins">

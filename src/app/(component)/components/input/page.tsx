@@ -83,6 +83,7 @@ function InputPage() {
         It supports multiple variants, sizes, and themes to match different
         design needs.
       </p>
+      <SubTitle>Usage</SubTitle>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -254,7 +255,7 @@ const contentPropInput = [
 const ApiInput = () => {
   return (
     <div className="flex flex-col pb-10 pt-5">
-      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       <div className="flex flex-col gap-3">
         <SubTitle>Prop</SubTitle>
         <Table variant={"bordered"}>

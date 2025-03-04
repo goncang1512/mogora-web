@@ -95,6 +95,7 @@ function CheckboxPage() {
           enhance styling co
         </p>
       </div>
+      <SubTitle>Usage</SubTitle>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -156,7 +157,7 @@ function CheckboxPage() {
 const ApiAccordion = () => {
   return (
     <div className="flex flex-col pb-10 pt-5">
-      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       {contentPropCheckbox.map((data) => {
         return (
           <div key={data?.title} className="flex flex-col gap-3">

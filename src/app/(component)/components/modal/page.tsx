@@ -42,6 +42,7 @@ function ModalPage() {
         and <HightLight>Content</HightLight> subcomponents for interaction and
         display.
       </p>
+      <SubTitle>Usage</SubTitle>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -177,7 +178,7 @@ const modalContent = [
 const ApiModal = () => {
   return (
     <div className="flex flex-col pb-10 pt-5">
-      <SubTitle className="text-2xl font-bold">API Reference</SubTitle>
+      <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       {modalContent.map((data) => (
         <div className="flex flex-col gap-3" key={data.title}>
           <SubTitle>{data.title}</SubTitle>
