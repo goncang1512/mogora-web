@@ -4,7 +4,7 @@ import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard } from "lucide-react";
-import { Input, Select, Table, Tabs } from "mogora-ui";
+import { Input, Label, Select, Table, Tabs } from "mogora-ui";
 import React, { useState } from "react";
 
 const inputCode = (
@@ -25,6 +25,33 @@ export default function InputDemo() {
 
   return CheckCode;
 };
+
+const floatingLabel: string = `
+import { Input, Label } from "mogora-ui";
+
+export default function LabelFloating() {
+  return (
+    <div>
+      // Default Variant
+      <div className="relative flex flex-col gap-2 w-sm">
+        <Input theme={"primary"} id="username" name="username" variant={"default"} placeholder=" " className="peer" />
+        <Label
+          htmlFor="username" className="floating-label-default">
+          Username
+        </Label>
+      </div>
+
+      // Underline Variant
+      <div className="relative flex flex-col gap-2 w-sm">
+        <Input theme={"primary"} id="email" name="email" variant={"underline"} placeholder=" " className="peer" />
+        <Label htmlFor="email" className="floating-label-underline">
+          Email
+        </Label>
+      </div>
+    </div>
+  )
+}
+`;
 
 const themeses = [
   "primary",
@@ -131,6 +158,66 @@ function InputPage() {
           </div>
         </div>
       </Tabs>
+      <div className="pt-10">
+        <SubTitle>Floating Label</SubTitle>
+        <Tabs defaultValue="preview" variant={"underline"}>
+          <Tabs.List className="gap-0">
+            <Tabs.Trigger value="preview" className="font-semibold">
+              Preview
+            </Tabs.Trigger>
+            <Tabs.Trigger value="code" className="font-semibold">
+              Code
+            </Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content
+            value="preview"
+            className="w-full flex flex-col gap-10 items-center justify-center border border-gray-300 p-3 rounded-md mt-3 h-[60vh] overflow-auto"
+          >
+            {/* COPONENT */}
+            <div className="relative flex flex-col gap-2 w-sm">
+              <Input
+                theme={"primary"}
+                id="username"
+                name="username"
+                variant={"default"}
+                placeholder=" "
+                className="peer"
+              />
+              <Label htmlFor="username" className="floating-label-default">
+                Username
+              </Label>
+            </div>
+            <div className="relative flex flex-col gap-2 w-sm">
+              <Input
+                theme={"primary"}
+                id="email"
+                name="email"
+                variant={"underline"}
+                placeholder=" "
+                className="peer"
+              />
+              <Label htmlFor="email" className="floating-label-underline">
+                Email
+              </Label>
+            </div>
+          </Tabs.Content>
+          <Tabs.Content
+            value="code"
+            className="w-full relative flex-col py-0  flex items-center justify-center rounded-md mt-3 h-[60vh]"
+          >
+            {/* CODE */}
+            <div className="absolute top-4 right-8">
+              <button
+                onClick={() => copyToClipboard(floatingLabel)}
+                className="text-white hover:bg-gray-500 p-1 rounded-md"
+              >
+                {copy ? <Check size={17} /> : <Clipboard size={17} />}
+              </button>
+            </div>
+            <CodeBlock>{floatingLabel}</CodeBlock>
+          </Tabs.Content>
+        </Tabs>
+      </div>
       <ApiInput />
     </Container>
   );

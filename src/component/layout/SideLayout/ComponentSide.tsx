@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { ComponentDocs, ComponentLink } from "./LinkComponent";
 

@@ -1,9 +1,10 @@
 "use client";
 import { CodeBlock } from "@/component/client/prism";
+import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard, EllipsisVertical } from "lucide-react";
-import { Button, Popover, Tabs } from "mogora-ui";
+import { Button, Popover, Table, Tabs } from "mogora-ui";
 import React from "react";
 
 const popoverCode: string = `
@@ -30,6 +31,13 @@ function PopoverPage() {
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Popover</h1>
+      <SubTitle>Description</SubTitle>
+      <p>
+        The <HightLight>Popover</HightLight> is a UI component used to display
+        temporary content that appears around a trigger element. This component
+        can be used to display menus, tooltips, or additional information for
+        users.
+      </p>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -71,8 +79,97 @@ function PopoverPage() {
           <CodeBlock>{popoverCode}</CodeBlock>
         </Tabs.Content>
       </Tabs>
+      <ApiComponent />
     </Container>
   );
 }
+
+const APIREFERENCES = [
+  {
+    title: "Popover",
+    description: "",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Elements to be rendered inside the popover.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "Popover.Trigger",
+    description:
+      "The trigger component used to display the popover when clicked.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "The element that can be clicked to show the popover.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "Popover.Content",
+    description: "The component that contains the displayed popover content.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Content to be displayed inside the popover.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+      {
+        prop: "align",
+        type: `"left" | "right"`,
+        description: "Determines the alignment of the popover content.",
+      },
+    ],
+  },
+];
+
+const ApiComponent = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      {APIREFERENCES.map((data) => (
+        <div key={data.title}>
+          <SubTitle>{data.title}</SubTitle>
+          <p>{data.description}</p>
+          <Table variant="bordered">
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Prop</Table.HeaderCell>
+                <Table.HeaderCell className="w-[300px]">Type</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {data?.props?.map((value) => (
+                <Table.Row key={value.prop}>
+                  <Table.Cell>{value.prop}</Table.Cell>
+                  <Table.Cell>{value.type}</Table.Cell>
+                  <Table.Cell>{value.description}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default PopoverPage;

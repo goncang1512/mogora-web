@@ -15,8 +15,8 @@ function Mobilebar() {
           <Link href={"/"} className="font-bold text-xl">
             Mogora UI
           </Link>
-          <span className="bg-gray-300  px-1 rounded-md text-xs font-mono">
-            v0.4
+          <span className="bg-gray-300  px-1 rounded-sm text-xs font-mono">
+            v0.5
           </span>
         </div>
         <div className="gap-2 items-center md:flex hidden">

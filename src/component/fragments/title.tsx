@@ -23,7 +23,7 @@ export const HightLight = ({
 }: HightLightProps) => {
   return (
     <span
-      className={twClass("bg-gray-200 px-2 rounded-md", className)}
+      className={twClass("bg-gray-200 px-2 rounded-sm", className)}
       {...props}
     >
       {children}

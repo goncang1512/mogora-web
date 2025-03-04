@@ -1,9 +1,10 @@
 "use client";
 import { CodeBlock } from "@/component/client/prism";
+import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard } from "lucide-react";
-import { Card, Input, Select, Tabs } from "mogora-ui";
+import { Card, Input, Select, Table, Tabs } from "mogora-ui";
 import React, { useState } from "react";
 
 const tabsCode = (variant: string) => {
@@ -53,6 +54,16 @@ function TabsPage() {
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Tabs</h1>
+      <SubTitle>Description</SubTitle>
+      <p>
+        The <HightLight>Tabs</HightLight> component is a flexible and
+        customizable tab system that allows users to switch between different
+        sections of content. It consists of <HightLight>Tabs</HightLight>,{" "}
+        <HightLight>Tabs.List</HightLight>,{" "}
+        <HightLight>Tabs.Trigger</HightLight>, and{" "}
+        <HightLight>Tabs.Content</HightLight>
+        components, making it modular and easy to use.
+      </p>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -152,8 +163,134 @@ function TabsPage() {
           </Select>
         </div>
       </Tabs>
+      <ApiComponent />
     </Container>
   );
 }
+
+const APIREFERENCES = [
+  {
+    title: "Tabs",
+    description: "The main Tabs component that provides tab functionality.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Elements to be rendered inside the Tabs component.",
+      },
+      {
+        prop: "defaultValue",
+        type: "string",
+        description: "The default active tab value.",
+      },
+      {
+        prop: "variant",
+        type: "'default' | 'underline'",
+        description: "Determines the style of the Tabs component.",
+      },
+      {
+        prop: "size",
+        type: "'default' | 'normal'",
+        description: "Defines the size of the Tabs component.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "List",
+    description: "A wrapper component for tab triggers.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Tab trigger elements inside the List.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "Trigger",
+    description: "The button component that switches tabs.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Content inside the tab trigger.",
+      },
+      {
+        prop: "value",
+        type: "string",
+        description: "The value associated with the tab trigger.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "Content",
+    description: "The component that displays content based on the active tab.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Content inside the tab content section.",
+      },
+      {
+        prop: "value",
+        type: "string",
+        description: "The value associated with the content section.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+];
+
+const ApiComponent = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      {APIREFERENCES.map((data) => (
+        <div key={data.title}>
+          <SubTitle>{data.title}</SubTitle>
+          <p>{data.description}</p>
+          <Table variant="bordered">
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Prop</Table.HeaderCell>
+                <Table.HeaderCell className="w-[300px]">Type</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {data?.props?.map((value) => (
+                <Table.Row key={value.prop}>
+                  <Table.Cell>{value.prop}</Table.Cell>
+                  <Table.Cell className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal">
+                    {value.type}
+                  </Table.Cell>
+                  <Table.Cell>{value.description}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default TabsPage;

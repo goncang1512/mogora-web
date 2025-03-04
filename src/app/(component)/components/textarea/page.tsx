@@ -1,9 +1,10 @@
 "use client";
 import { CodeBlock } from "@/component/client/prism";
+import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard } from "lucide-react";
-import { Select, Tabs, Textarea } from "mogora-ui";
+import { Select, Table, Tabs, Textarea } from "mogora-ui";
 import React, { useState } from "react";
 
 const textareFunction = (
@@ -46,6 +47,14 @@ function TextareaPage() {
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Textarea</h1>
+      <SubTitle>Description</SubTitle>
+      <p>
+        The <HightLight>Textarea</HightLight> component is a customizable
+        multiline text input field. It supports various styles, sizes, and
+        themes to fit different design requirements. Built using{" "}
+        <HightLight>class-variance-authority</HightLight>, it allows easy
+        customization while maintaining consistency.
+      </p>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -121,8 +130,76 @@ function TextareaPage() {
           </div>
         </div>
       </Tabs>
+      <ApiComponent />
     </Container>
   );
 }
+
+const APIREFERENCES = [
+  {
+    title: "Textarea",
+    description: "A customizable multiline text input field.",
+    props: [
+      {
+        prop: "variant",
+        type: "'default' | 'underline'",
+        description: "Determines the styling variant of the textarea.",
+      },
+      {
+        prop: "size",
+        type: "'small' | 'normal' | 'large'",
+        description: "Defines the size of the textarea.",
+      },
+      {
+        prop: "theme",
+        type: "'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info'",
+        description: "Sets the focus color theme.",
+      },
+      {
+        prop: "placeholder",
+        type: "string",
+        description: "Placeholder text displayed when the textarea is empty.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional custom classes for styling.",
+      },
+    ],
+  },
+];
+
+const ApiComponent = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      {APIREFERENCES.map((data) => (
+        <div key={data.title}>
+          <SubTitle>{data.title}</SubTitle>
+          <p>{data.description}</p>
+          <Table variant="bordered">
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Prop</Table.HeaderCell>
+                <Table.HeaderCell className="w-[300px]">Type</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {data?.props?.map((value) => (
+                <Table.Row key={value.prop}>
+                  <Table.Cell>{value.prop}</Table.Cell>
+                  <Table.Cell className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal">
+                    {value.type}
+                  </Table.Cell>
+                  <Table.Cell>{value.description}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default TextareaPage;

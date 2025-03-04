@@ -1,9 +1,10 @@
 "use client";
 import { CodeBlock } from "@/component/client/prism";
+import { HightLight, SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { useGlobal } from "@/lib/context/GlobalProvider";
 import { Check, Clipboard } from "lucide-react";
-import { Button, Input, Sheet, Tabs } from "mogora-ui";
+import { Button, Input, Sheet, Table, Tabs } from "mogora-ui";
 import React from "react";
 
 const SheetCode: string = `
@@ -33,6 +34,14 @@ function SheetPage() {
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Sheet</h1>
+      <SubTitle>Description</SubTitle>
+      <p>
+        The <HightLight>Sheet</HightLight> component is a side modal that can
+        slide in and out from the left or right side of the screen. It serves as
+        the main container for managing state and logic, while the Sheet.Trigger
+        acts as the interactive element to open the Sheet, and the Sheet.Content
+        holds the content, allowing customization of its position.
+      </p>
       <Tabs defaultValue="preview" variant={"underline"}>
         <Tabs.List className="gap-0">
           <Tabs.Trigger value="preview" className="font-semibold">
@@ -86,8 +95,109 @@ function SheetPage() {
           <CodeBlock>{SheetCode}</CodeBlock>
         </Tabs.Content>
       </Tabs>
+      <ApiComponent />
     </Container>
   );
 }
+
+const APIREFERENCES = [
+  {
+    title: "Sheet",
+    description: "The main component for managing the Sheet.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Elements to be rendered inside the Sheet.",
+      },
+      {
+        prop: "open",
+        type: "boolean",
+        description: "Determines whether the Sheet is open or not.",
+      },
+      {
+        prop: "onOpenChange",
+        type: "(open: boolean) => void",
+        description:
+          "Callback function triggered when the Sheet state changes.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "Sheet.Trigger",
+    description: "The trigger component used to open the Sheet.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "The element that can be clicked to open the Sheet.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+    ],
+  },
+  {
+    title: "Sheet.Content",
+    description: "The component that displays the Sheet content.",
+    props: [
+      {
+        prop: "children",
+        type: "ReactNode",
+        description: "Content to be displayed inside the Sheet.",
+      },
+      {
+        prop: "className",
+        type: "string",
+        description: "Additional classes for styling.",
+      },
+      {
+        prop: "position",
+        type: '"left" | "right"',
+        description: "Determines the position of the Sheet (left or right).",
+      },
+    ],
+  },
+];
+
+const ApiComponent = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      {APIREFERENCES.map((data) => (
+        <div key={data.title}>
+          <SubTitle>{data.title}</SubTitle>
+          <p>{data.description}</p>
+          <Table variant="bordered">
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Prop</Table.HeaderCell>
+                <Table.HeaderCell className="w-[300px]">Type</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {data?.props?.map((value) => (
+                <Table.Row key={value.prop}>
+                  <Table.Cell>{value.prop}</Table.Cell>
+                  <Table.Cell className="max-sm:max-w-[100px] w-[100px] break-words whitespace-normal">
+                    {value.type}
+                  </Table.Cell>
+                  <Table.Cell>{value.description}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default SheetPage;
