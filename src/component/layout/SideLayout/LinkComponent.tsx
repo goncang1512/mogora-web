@@ -19,6 +19,7 @@ const ComponentsLinks = [
   "textarea",
   "toggle",
   "tabs",
+  "drawer",
 ];
 
 const sortedComponentsLinks = [...ComponentsLinks].sort();

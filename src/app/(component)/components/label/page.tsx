@@ -33,7 +33,7 @@ export default function LabelDemo() {
 function LabelPage() {
   const { copyToClipboard, copy } = useGlobal();
   return (
-    <Container>
+    <Container className="pb-10">
       <h1 className="text-3xl font-semibold">Label</h1>
       <SubTitle>Description</SubTitle>
       <p>

@@ -4,10 +4,8 @@ import Link from "next/link";
 import React from "react";
 import { AlignLeft } from "lucide-react";
 import { ComponentDocs, ComponentLink } from "./SideLayout/LinkComponent";
-import { usePathname } from "next/navigation";
 
 function Mobilebar() {
-  const pathname = usePathname();
   return (
     <div className="bg-white border-b border-gray-300 h-14 z-50 w-full fixed top-0">
       <div className="flex items-center md:justify-start justify-between gap-5 h-full px-5">
@@ -16,16 +14,12 @@ function Mobilebar() {
             Mogora UI
           </Link>
           <span className="bg-gray-300  px-1 rounded-sm text-xs font-mono">
-            v0.5
+            v0.6
           </span>
         </div>
         <div className="gap-2 items-center md:flex hidden">
-          {pathname === "/" && (
-            <>
-              <Link href={"/docs"}>Docs</Link>
-              <Link href="/components">Components</Link>
-            </>
-          )}
+          <Link href={"/docs"}>Docs</Link>
+          <Link href="/components">Components</Link>
           <Link href={"/"}>Template</Link>
         </div>
         <Sheet>

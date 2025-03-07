@@ -170,7 +170,7 @@ const APIREFERENCES = [
 
 const ApiComponent = () => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 pb-10">
       <SubTitle className="text-xl font-bold">API Reference</SubTitle>
       {APIREFERENCES.map((data) => (
         <div key={data.title}>
