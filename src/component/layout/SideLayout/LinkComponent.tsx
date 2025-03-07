@@ -30,7 +30,7 @@ const styleBorderRight =
 export const ComponentLink = () => {
   const pathaname = usePathname();
   return (
-    <div className="flex flex-col gap-2 text-base w-full overflow-y-visible border-l-3 border-gray-200 ml-1 md:ml-3">
+    <div className="flex flex-col gap-2 text-base w-full overflow-y-visible border-l-3 border-gray-200 ml-1 md:ml-3 mb-10">
       {sortedComponentsLinks?.map((name: string, index: number) => (
         <Link
           key={index}
