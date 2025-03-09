@@ -135,7 +135,7 @@ function TablePage() {
                   key={name}
                   onClick={() => setVariant(name)}
                   value={name}
-                  className="capitalize"
+                  className="capitalize dark:text-slate-800"
                 >
                   {name}
                 </Select.Item>

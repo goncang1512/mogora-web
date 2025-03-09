@@ -33,18 +33,18 @@ export default function LabelFloating() {
   return (
     <div>
       // Default Variant
-      <div className="relative flex flex-col gap-2 w-sm">
+      <div className="relative flex flex-col gap-2">
         <Input theme={"primary"} id="username" name="username" variant={"default"} placeholder=" " className="peer" />
         <Label
-          htmlFor="username" className="floating-label-default">
+          htmlFor="username" className="float-[default]">
           Username
         </Label>
       </div>
 
       // Underline Variant
-      <div className="relative flex flex-col gap-2 w-sm">
+      <div className="relative flex flex-col gap-2">
         <Input theme={"primary"} id="email" name="email" variant={"underline"} placeholder=" " className="peer" />
-        <Label htmlFor="email" className="floating-label-underline">
+        <Label htmlFor="email" className="float-[underline]">
           Email
         </Label>
       </div>
@@ -102,7 +102,7 @@ function InputPage() {
             placeholder="Username"
             variant={variant}
             theme={theme}
-            className="w-sm"
+            className="w-sm dark:text-slate-800"
           />
         </Tabs.Content>
         <Tabs.Content
@@ -132,7 +132,7 @@ function InputPage() {
                     key={name}
                     onClick={() => setTheme(name)}
                     value={name}
-                    className="capitalize"
+                    className="capitalize dark:text-slate-800"
                   >
                     {name}
                   </Select.Item>
@@ -149,7 +149,7 @@ function InputPage() {
                     key={name}
                     onClick={() => setVariant(name)}
                     value={name}
-                    className="capitalize"
+                    className="capitalize dark:text-slate-800"
                   >
                     {name}
                   </Select.Item>
@@ -172,34 +172,36 @@ function InputPage() {
           </Tabs.List>
           <Tabs.Content
             value="preview"
-            className="w-full flex flex-col gap-10 items-center justify-center border border-gray-300 p-3 rounded-md mt-3 h-[60vh] overflow-auto"
+            className="w-full flex items-center justify-center border border-gray-300 p-3 rounded-md mt-3 h-[60vh] overflow-auto"
           >
             {/* COPONENT */}
-            <div className="relative flex flex-col gap-2 w-sm">
-              <Input
-                theme={"primary"}
-                id="username"
-                name="username"
-                variant={"default"}
-                placeholder=" "
-                className="peer"
-              />
-              <Label htmlFor="username" className="floating-label-default">
-                Username
-              </Label>
-            </div>
-            <div className="relative flex flex-col gap-2 w-sm">
-              <Input
-                theme={"primary"}
-                id="email"
-                name="email"
-                variant={"underline"}
-                placeholder=" "
-                className="peer"
-              />
-              <Label htmlFor="email" className="floating-label-underline">
-                Email
-              </Label>
+            <div className="w-sm flex flex-col gap-10">
+              <div className="relative flex flex-col gap-2">
+                <Input
+                  theme={"primary"}
+                  id="username"
+                  name="username"
+                  variant={"default"}
+                  placeholder=" "
+                  className="peer dark:text-slate-800"
+                />
+                <Label htmlFor="username" className="float-[default]">
+                  Username
+                </Label>
+              </div>
+              <div className="relative flex flex-col gap-2  ">
+                <Input
+                  theme={"primary"}
+                  id="email"
+                  name="email"
+                  variant={"underline"}
+                  placeholder=" "
+                  className="peer dark:text-slate-800"
+                />
+                <Label htmlFor="email" className="float-[underline]">
+                  Email
+                </Label>
+              </div>
             </div>
           </Tabs.Content>
           <Tabs.Content

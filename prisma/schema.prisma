@@ -15,7 +15,7 @@ datasource db {
 
 // ENUM MODEL
 enum RoleUser {
-  Admin
+  Seller
   Reguler
   Administrator
 }

@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.8",
+    "jose": "^6.0.8",
     "lucide-react": "^0.475.0",
     "mogora-ui": "^0.6.4",
-    "next": "15.1.7",
+    "next": "^15.2.1",
     "pg": "^8.13.3",
     "prisma": "^6.4.1",
     "prismjs": "^1.29.0",

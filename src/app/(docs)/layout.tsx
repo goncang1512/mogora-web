@@ -1,4 +1,3 @@
-"use client";
 import Mobilebar from "@/component/layout/Mobilebar";
 import ComponentSide from "@/component/layout/SideLayout/ComponentSide";
 import React from "react";

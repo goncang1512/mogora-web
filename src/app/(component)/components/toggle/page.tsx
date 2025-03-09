@@ -45,7 +45,7 @@ function TogglePage() {
           className="w-full flex items-center justify-center border border-gray-300 p-3 rounded-md mt-3 h-[60vh] overflow-auto"
         >
           {/* COPONENT */}
-          <Toggle className="size-10">
+          <Toggle className="size-10 dark:text-slate-800">
             <EllipsisVertical size={30} />
           </Toggle>
         </Tabs.Content>

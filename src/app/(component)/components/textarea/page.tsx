@@ -74,7 +74,7 @@ function TextareaPage() {
             placeholder="goncang"
             variant={variant}
             theme={theme}
-            className="w-sm"
+            className="w-sm dark:text-slate-800"
           />
         </Tabs.Content>
         <Tabs.Content
@@ -104,7 +104,7 @@ function TextareaPage() {
                     key={name}
                     onClick={() => setTheme(name)}
                     value={name}
-                    className="capitalize"
+                    className="capitalize dark:text-slate-800"
                   >
                     {name}
                   </Select.Item>
@@ -121,7 +121,7 @@ function TextareaPage() {
                     key={name}
                     onClick={() => setVariant(name)}
                     value={name}
-                    className="capitalize"
+                    className="capitalize dark:text-slate-800"
                   >
                     {name}
                   </Select.Item>

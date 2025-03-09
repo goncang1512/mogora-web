@@ -139,7 +139,7 @@ function CheckboxPage() {
                     key={name}
                     onClick={() => setTheme(name)}
                     value={name}
-                    className="capitalize"
+                    className="capitalize dark:text-slate-800"
                   >
                     {name}
                   </Select.Item>
