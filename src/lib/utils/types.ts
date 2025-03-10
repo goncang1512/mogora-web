@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export type ResponseType<
   T extends Record<string, unknown> = Record<string, unknown>
 > = {
@@ -11,6 +10,7 @@ export type ResponseType<
 export type statusAuth = "authenticated" | "unauthenticated";
 
 export type UserRole = "Reguler" | "Administrator" | "Seller";
+export type StatusAccount = "Aktif" | "Banned" | "Premium";
 
 export type UserType<
   T extends Record<string, unknown> = Record<string, unknown>
@@ -21,6 +21,8 @@ export type UserType<
   role: UserRole;
   avatar: string;
   avatar_id: string;
+  status: StatusAccount;
+  access_token: string;
   created_at: Date;
   updated_at: Date;
 } & T;

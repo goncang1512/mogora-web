@@ -1,8 +1,15 @@
-"use client";
+import { getServerSession } from "@/lib/getSession";
 import React from "react";
 
-function CreateCompnent() {
-  return <div>Create Component</div>;
+async function CreateCompnent() {
+  const session = await getServerSession();
+
+  return (
+    <div>
+      <p>Username: {session?.user?.name}</p>
+      <p>Email: {session?.user?.email}</p>
+    </div>
+  );
 }
 
 export default CreateCompnent;

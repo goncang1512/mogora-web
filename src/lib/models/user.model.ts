@@ -26,6 +26,7 @@ const userModel = {
         role,
         email, 
         avatar, 
+        status,
         avatar_id,
         created_at,
         updated_at

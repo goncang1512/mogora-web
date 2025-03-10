@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AuthProvider } from "@/lib/context/AuthProvider";
-import { getServerSession } from "@/lib/actions/auth.action";
 
 export const metadata: Metadata = {
   title: "Mogora UI",
@@ -13,12 +11,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await getServerSession();
   return (
-    <AuthProvider user={user?.user} status={user?.isauthenticated}>
-      <html lang="en">
-        <body className={` antialiased font-inter`}>{children}</body>
-      </html>
-    </AuthProvider>
+    <html lang="en">
+      <body className={` antialiased font-inter`}>{children}</body>
+    </html>
   );
 }

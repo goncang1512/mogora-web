@@ -2,12 +2,15 @@
 import Link from "next/link";
 import React from "react";
 import MobileSideBar from "./SideLayout/MobileSideBar";
-import { useSession } from "@/lib/context/AuthProvider";
-import { Button } from "mogora-ui";
-import { logout } from "@/lib/actions/auth.action";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { LogOut } from "lucide-react";
+import { useSession } from "@/lib/useSession";
 
 export default function Mobilebar() {
-  const { data } = useSession();
+  const router = useRouter();
+  const { data: session } = useSession();
+
   return (
     <div className="bg-white border-b border-gray-300 h-14 z-50 w-full fixed top-0">
       <div className="flex items-center md:justify-start justify-between gap-5 h-full px-5">
@@ -19,19 +22,30 @@ export default function Mobilebar() {
             v0.6
           </span>
         </div>
-        <div className="md:flex hidden w-full justify-between">
+        <div className="md:flex hidden w-full justify-between items-center">
           <div className="gap-2 items-center flex">
             <Link href={"/docs"}>Docs</Link>
             <Link href="/components">Components</Link>
             <Link href={"/"}>Template</Link>
           </div>
 
-          {data ? (
+          {session ? (
             <div className="flex items-center gap-4">
-              <Link href={"/dashboard/create"}>{data.username}</Link>
-              <Button variant={"danger"} onClick={logout}>
-                Logout
-              </Button>
+              <Link href={"/dashboard/create"}>{session?.user?.name}</Link>
+              <button
+                className="hover:bg-gray-200 p-1 rounded-lg"
+                onClick={async () =>
+                  await authClient.signOut({
+                    fetchOptions: {
+                      onSuccess: () => {
+                        router.push("/login"); // redirect to login page
+                      },
+                    },
+                  })
+                }
+              >
+                <LogOut size={23} />
+              </button>
             </div>
           ) : (
             <div className="flex gap-3">

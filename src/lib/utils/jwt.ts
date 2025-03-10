@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { statusAuth, UserType } from "./types";
 import { NextRequest } from "next/server";
+import { JWT } from "next-auth/jwt";
 
 const ACCESS_SECRET = process.env.ACCESS_SECRET || "secret123";
 const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh456";
@@ -9,17 +10,15 @@ const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh456";
 const accessKey = new TextEncoder().encode(ACCESS_SECRET);
 const refreshKey = new TextEncoder().encode(REFRESH_SECRET);
 
-export const generateAccessToken = async (user: UserType) => {
+export const generateAccessToken = async (user: JWT) => {
   return new SignJWT({ id: user.id, email: user.email })
     .setProtectedHeader({ alg: "HS256" })
-    .setExpirationTime("15m")
     .sign(accessKey);
 };
 
 export const generateRefreshToken = async (user: UserType) => {
   return new SignJWT({ id: user.id })
     .setProtectedHeader({ alg: "HS256" })
-    .setExpirationTime("7d")
     .sign(refreshKey);
 };
 
@@ -44,12 +43,12 @@ export const verifyRefreshToken = async (
 export const checkSession = async (
   req: NextRequest
 ): Promise<{ user: UserType | null; status: statusAuth }> => {
-  const refreshToken = req.cookies.get("refresh_token")?.value;
+  const accessToken = req.cookies.get("access_token")?.value;
 
   const res = await fetch(`${req.nextUrl.origin}/api/auth/session`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${refreshToken}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
 
