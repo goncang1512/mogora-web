@@ -31,7 +31,7 @@ export default function Mobilebar() {
 
           {session ? (
             <div className="flex items-center gap-4">
-              <Link href={"/dashboard/create"}>{session?.user?.name}</Link>
+              <Link href={"/dashboard/setting"}>{session?.user?.name}</Link>
               <button
                 className="hover:bg-gray-200 p-1 rounded-lg"
                 onClick={async () =>

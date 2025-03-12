@@ -13,18 +13,23 @@
     "migrate:deploy": "npx prisma migrate deploy"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.3",
     "@prisma/client": "^6.4.1",
     "@tailwindcss/postcss": "^4.0.8",
+    "@tinymce/tinymce-react": "^6.0.0",
+    "@uiw/codemirror-theme-vscode": "^4.23.10",
+    "@uiw/react-codemirror": "^4.23.10",
     "better-auth": "^1.2.3",
     "jose": "^6.0.8",
     "lucide-react": "^0.475.0",
-    "mogora-ui": "^0.6.6",
+    "mogora-ui": "^0.6.8",
     "next": "^15.2.1",
     "pg": "^8.13.3",
     "prisma": "^6.4.1",
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

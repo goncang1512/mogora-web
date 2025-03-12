@@ -23,6 +23,12 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  component     Component[]
+
+  role String
+
+  avatar   String
+  avatarId String
 
   @@map("user")
 }
@@ -70,4 +76,19 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model Component {
+  id            String      @id  @default(uuid())
+  name          String      @unique
+  slug          String      @unique
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code          String?
+  preview       String?
+  preview_id    String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @default(now())
+
+  @@map("component")
 }

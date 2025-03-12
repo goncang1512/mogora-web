@@ -1,14 +1,15 @@
-import { getServerSession } from "@/lib/getSession";
+import Container from "@/component/layout/Container";
+import CreateComponent from "@/component/layout/CreateComponent";
+// import { getServerSession } from "@/lib/getSession";
 import React from "react";
 
 async function CreateCompnent() {
-  const session = await getServerSession();
+  // const session = await getServerSession();
 
   return (
-    <div>
-      <p>Username: {session?.user?.name}</p>
-      <p>Email: {session?.user?.email}</p>
-    </div>
+    <Container>
+      <CreateComponent />
+    </Container>
   );
 }
 

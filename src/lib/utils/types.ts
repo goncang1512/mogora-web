@@ -26,3 +26,15 @@ export type UserType<
   created_at: Date;
   updated_at: Date;
 } & T;
+
+export type ComponentType = {
+  id: string;
+  name: string;
+  slug: string;
+  userId: string;
+  code: string;
+  preview: string;
+  preview_id: string;
+  createdAt: Date;
+  updatedAt: Date;
+};

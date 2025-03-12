@@ -1,3 +1,4 @@
+"use client";
 import { twClass } from "mogora-ui";
 import React from "react";
 
