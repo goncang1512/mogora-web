@@ -5,10 +5,20 @@ import React, { useState } from "react";
 interface InputProps {
   placeholder: React.ReactNode;
   name: string;
+  required?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
 }
 
-export function InputFloat({ name, type, placeholder }: InputProps) {
+export function InputFloat({
+  name,
+  value,
+  onChange,
+  type,
+  placeholder,
+  required,
+}: InputProps) {
   return (
     <div className="relative flex flex-col gap-2">
       <Input
@@ -16,8 +26,11 @@ export function InputFloat({ name, type, placeholder }: InputProps) {
         id={name}
         name={name}
         variant={"default"}
+        value={value}
+        onChange={onChange}
         placeholder=" "
         type={type}
+        required={required}
         className="peer dark:text-slate-800 text-base"
       />
       <Label
@@ -30,7 +43,13 @@ export function InputFloat({ name, type, placeholder }: InputProps) {
   );
 }
 
-export function InputFloatPassword({ name, placeholder }: InputProps) {
+export function InputFloatPassword({
+  name,
+  value,
+  onChange,
+  placeholder,
+  required,
+}: InputProps) {
   const [seePassword, setSeePassword] = useState(false);
 
   return (
@@ -40,9 +59,12 @@ export function InputFloatPassword({ name, placeholder }: InputProps) {
         id={name}
         name={name}
         variant={"default"}
+        value={value}
+        onChange={onChange}
         placeholder=" "
         className="peer dark:text-slate-800 text-base pr-9"
         type={seePassword ? "text" : "password"}
+        required={required}
       />
       <Label
         htmlFor={name}

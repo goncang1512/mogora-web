@@ -24,7 +24,7 @@ function ButtonSocial() {
       <Button
         type="button"
         onClick={handleDiscord}
-        className="bg-[#5865F2] hover:bg-[#6758f2] w-full flex items-center justify-center gap-3"
+        className="bg-[#5865F2] dark:bg-[#5865F2] hover:bg-[#6758f2] w-full flex items-center justify-center gap-3"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

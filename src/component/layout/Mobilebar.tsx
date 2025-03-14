@@ -12,7 +12,7 @@ export default function Mobilebar() {
   const { data: session } = useSession();
 
   return (
-    <div className="bg-white border-b border-gray-300 h-14 z-50 w-full fixed top-0">
+    <div className="bg-white border-b border-gray-300 h-14 z-10 w-full fixed top-0">
       <div className="flex items-center md:justify-start justify-between gap-5 h-full px-5">
         <div className="flex items-center gap-2">
           <Link href={"/"} className="font-bold text-xl whitespace-nowrap">
@@ -26,7 +26,7 @@ export default function Mobilebar() {
           <div className="gap-2 items-center flex">
             <Link href={"/docs"}>Docs</Link>
             <Link href="/components">Components</Link>
-            <Link href={"/"}>Template</Link>
+            <Link href={"/template"}>Template</Link>
           </div>
 
           {session ? (

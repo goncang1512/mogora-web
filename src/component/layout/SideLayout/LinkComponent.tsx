@@ -69,3 +69,47 @@ export const ComponentDocs = () => {
     </div>
   );
 };
+
+// DASHBOARD COMPONENT LINK
+const DashboardLink = ["create", "product", "setting"];
+
+export function DashboardComponent() {
+  const pathaname = usePathname();
+  return (
+    <div className="flex flex-col gap-2 text-base w-full overflow-y-visible border-l-3 border-gray-200 ml-1 md:ml-3">
+      {DashboardLink?.map((name: string, index: number) => (
+        <Link
+          key={index}
+          href={`/dashboard/${name}`}
+          className={`${
+            pathaname === `/dashboard/${name}` && `py-1 ${styleBorderRight}`
+          } capitalize px-2 md:px-5 font-medium text-gray-600 relative z-[51]`}
+        >
+          {name}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+// UI COMPONENT LINK
+const UILINK = ["template", "layout"];
+export function UiComponent() {
+  const pathaname = usePathname();
+
+  return (
+    <div className="flex flex-col gap-2 text-base w-full overflow-y-visible border-l-3 border-gray-200 ml-1 md:ml-3">
+      {UILINK?.map((name: string, index: number) => (
+        <Link
+          key={index}
+          href={`/${name}`}
+          className={`${
+            pathaname === `/${name}` && `py-1 ${styleBorderRight}`
+          } capitalize px-2 md:px-5 font-medium text-gray-600 relative z-[51]`}
+        >
+          {name}
+        </Link>
+      ))}
+    </div>
+  );
+}

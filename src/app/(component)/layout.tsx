@@ -7,8 +7,8 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <GlobalProvider>
       <div className="flex">
-        <ComponentSide />
         <Mobilebar />
+        <ComponentSide />
         <div className="flex-1 min-h-screen pl-0 md:pl-72 pt-14 overflow-x-hidden">
           {children}
         </div>
