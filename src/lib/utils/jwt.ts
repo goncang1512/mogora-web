@@ -1,7 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
 import { statusAuth, UserType } from "./types";
 import { NextRequest } from "next/server";
-import { JWT } from "next-auth/jwt";
 
 const ACCESS_SECRET = process.env.ACCESS_SECRET || "secret123";
 const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh456";
@@ -10,7 +9,7 @@ const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh456";
 const accessKey = new TextEncoder().encode(ACCESS_SECRET);
 const refreshKey = new TextEncoder().encode(REFRESH_SECRET);
 
-export const generateAccessToken = async (user: JWT) => {
+export const generateAccessToken = async (user: any) => {
   return new SignJWT({ id: user.id, email: user.email })
     .setProtectedHeader({ alg: "HS256" })
     .sign(accessKey);

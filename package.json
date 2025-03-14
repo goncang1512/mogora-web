@@ -16,7 +16,6 @@
     "@codemirror/lang-javascript": "^6.2.3",
     "@prisma/client": "^6.4.1",
     "@tailwindcss/postcss": "^4.0.8",
-    "@tinymce/tinymce-react": "^6.0.0",
     "@uiw/codemirror-theme-vscode": "^4.23.10",
     "@uiw/react-codemirror": "^4.23.10",
     "better-auth": "^1.2.3",
