@@ -8,9 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "migrate": "npx prisma db push",
-    "migrate:make": "npx prisma migrate dev --name init --skip-generate",
-    "migrate:reset": "npx prisma migrate reset --skip-generate",
-    "migrate:deploy": "npx prisma migrate deploy"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.3",
