@@ -18,6 +18,12 @@ export default function AccordionDemo() {
         <Accordion.Content>
           <p>Here is some content for Section 1.</p>
         </Accordion.Content>
+        <Accordion.Content>
+          <p>Here is some content for Section 1.</p>
+        </Accordion.Content>
+        <Accordion.Content>
+          <p>Here is some content for Section 1.</p>
+        </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item-2">
         <Accordion.Trigger>Section 2</Accordion.Trigger>
@@ -62,10 +68,17 @@ function AccordionPage() {
               <Accordion.Content>
                 <p>Here is some content for Section 1.</p>
               </Accordion.Content>
+              <Accordion.Content>
+                <p>Here is some content for Section 1.</p>
+              </Accordion.Content>
+              <Accordion.Content>
+                <p>Here is some content for Section 1.</p>
+              </Accordion.Content>
             </Accordion.Item>
             <Accordion.Item value={`item-2`}>
               <Accordion.Trigger>Section 2</Accordion.Trigger>
               <Accordion.Content>
+                <p>Explore more details in Section 2.</p>
                 <p>Explore more details in Section 2.</p>
               </Accordion.Content>
             </Accordion.Item>

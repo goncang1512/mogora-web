@@ -4,11 +4,13 @@ import { SubTitle } from "@/component/fragments/title";
 import Container from "@/component/layout/Container";
 import { authClient } from "@/lib/auth-client";
 import { useSession } from "@/lib/useSession";
-import { LogOut } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import { Accordion, Avatar, Button, Modal } from "mogora-ui";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function SettingPage() {
+  const router = useRouter();
   const data = useSession();
   const user = data?.data?.user;
   const [openModal, setOpenModal] = useState(false);
@@ -44,7 +46,11 @@ function SettingPage() {
             value={"item-1"}
             className="border-b-1 border-gray-300"
           >
-            <Accordion.Trigger>Profile</Accordion.Trigger>
+            <Accordion.Trigger>
+              <div className="flex items-end gap-2">
+                <User size={23} className="pb-1" /> <p>Profile</p>
+              </div>
+            </Accordion.Trigger>
             <Accordion.Content>
               <div>
                 <button
@@ -52,7 +58,7 @@ function SettingPage() {
                     setOpenModal(true);
                     setWhatEdit({ username: true, email: false });
                   }}
-                  className="hover:bg-gray-100 w-full py-2 rounded-md text-start pl-3"
+                  className="hover:bg-gray-100 w-full py-2 rounded-md text-start pl-4"
                 >
                   Edit Username
                 </button>
@@ -61,7 +67,7 @@ function SettingPage() {
                     setOpenModal(true);
                     setWhatEdit({ username: false, email: true });
                   }}
-                  className="hover:bg-gray-100 w-full py-2 rounded-md text-start pl-3"
+                  className="hover:bg-gray-100 w-full py-2 rounded-md text-start pl-4"
                 >
                   Edit Email
                 </button>
@@ -69,7 +75,19 @@ function SettingPage() {
             </Accordion.Content>
           </Accordion.Item>
         </Accordion>
-        <Button variant={"danger"} className="flex justify-between">
+        <Button
+          onClick={async () =>
+            await authClient.signOut({
+              fetchOptions: {
+                onSuccess: () => {
+                  router.push("/login"); // redirect to login page
+                },
+              },
+            })
+          }
+          variant={"danger"}
+          className="flex justify-between"
+        >
           Logout <LogOut />
         </Button>
       </div>
