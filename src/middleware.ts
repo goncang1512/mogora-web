@@ -4,6 +4,7 @@ import { Session } from "./lib/auth";
 import { betterFetch } from "@better-fetch/fetch";
 
 export default async function middleware(req: NextRequest) {
+  const sessionToken = req.cookies.get("session")?.value;
   const { data: session } = await betterFetch<Session>(
     "/api/auth/get-session",
     {
@@ -15,7 +16,7 @@ export default async function middleware(req: NextRequest) {
   );
   const { pathname } = req.nextUrl;
 
-  if (pathname.startsWith("/dashboard") && !session) {
+  if (pathname.startsWith("/dashboard") && !session && !sessionToken) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
