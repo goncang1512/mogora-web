@@ -40,7 +40,7 @@ function Page() {
 
   return (
     <div className="h-screen flex w-full justify-center items-center md:px-0 px-3">
-      <div className="max-w-md w-full p-3 gap-4 flex flex-col border border-gray-300 rounded-md">
+      <div className="max-w-md w-full p-4 gap-4 flex flex-col border border-gray-300 rounded-md">
         <h1 className="text-xl font-semibold">Login Form</h1>
         {message && (
           <p className="text-red-500 italic text-center">{message}</p>

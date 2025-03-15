@@ -38,3 +38,13 @@ export type ComponentType = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type AccountType = {
+  id: string;
+  accountId: string;
+  providerId: string;
+  userId: string;
+  scope: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
