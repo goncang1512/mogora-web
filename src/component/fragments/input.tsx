@@ -9,6 +9,7 @@ interface InputProps {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
+  ref?: React.Ref<HTMLInputElement>;
 }
 
 export function InputFloat({
@@ -18,10 +19,12 @@ export function InputFloat({
   type,
   placeholder,
   required,
+  ref,
 }: InputProps) {
   return (
     <div className="relative flex flex-col gap-2">
       <Input
+        ref={ref}
         theme={"secondary"}
         id={name}
         name={name}
@@ -49,12 +52,14 @@ export function InputFloatPassword({
   onChange,
   placeholder,
   required,
+  ref,
 }: InputProps) {
   const [seePassword, setSeePassword] = useState(false);
 
   return (
     <div className="relative flex flex-col gap-2">
       <Input
+        ref={ref}
         theme={"secondary"}
         id={name}
         name={name}

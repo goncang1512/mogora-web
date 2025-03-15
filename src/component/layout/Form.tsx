@@ -1,10 +1,10 @@
 "use client";
 import { InputFloat, InputFloatPassword } from "@/component/fragments/input";
 import { authClient } from "@/lib/auth-client";
+import { useGlobal } from "@/lib/context/GlobalProvider";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "mogora-ui";
-import { useRouter } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Form({
   nextField,
@@ -13,10 +13,11 @@ function Form({
   nextField: boolean;
   setNextField: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const [message, setMessage] = useState("");
+  const { loginFunc } = useGlobal();
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,14 +38,17 @@ function Form({
         name: formData.get("username") as string,
         avatar: "image.png",
         avatarId: "default_id",
-        callbackURL: "/login",
+        callbackURL: "/dashboard/setting",
       },
       {
         onRequest: () => {
           setLoading(true);
         },
-        onSuccess: () => {
-          router.push("/login");
+        onSuccess: async () => {
+          await loginFunc(
+            formData.get("email") as string,
+            formData.get("password") as string
+          );
           setLoading(false);
           formRef.current?.reset();
         },
@@ -59,11 +63,21 @@ function Form({
     );
   };
 
+  useEffect(() => {
+    if (nextField) {
+      passwordRef.current?.focus();
+    }
+  }, [nextField]);
+
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-3">
       {message && <p className="text-red-500 italic text-center">{message}</p>}
       <div className={nextField ? "flex flex-col gap-3" : "hidden"}>
-        <InputFloatPassword name="password" placeholder="Password" />
+        <InputFloatPassword
+          ref={passwordRef}
+          name="password"
+          placeholder="Password"
+        />
         <InputFloatPassword name="confirm" placeholder="Confirm password" />
       </div>
       <div className={!nextField ? "flex flex-col gap-3" : "hidden"}>

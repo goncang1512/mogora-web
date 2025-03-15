@@ -8,7 +8,8 @@ import { Table, Tabs, Toggle } from "mogora-ui";
 import React from "react";
 
 const toggleCode: string = `
-import { Avatar } from "mogora-ui";
+import { Toggle } from "mogora-ui";
+import { EllipsisVertical  } from "lucide-react";
 
 export default function ToggleDemo() {
   return (

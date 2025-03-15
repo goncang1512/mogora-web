@@ -4,9 +4,11 @@ import ButtonSocial from "@/component/layout/ButtonSocial";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "mogora-ui";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 
 function Page() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
@@ -18,7 +20,7 @@ function Page() {
       {
         email: formData.get("email") as string,
         password: formData.get("password") as string,
-        callbackURL: "/dashboard/create",
+        callbackURL: "/dashboard/setting",
       },
       {
         onRequest: () => {
@@ -26,6 +28,7 @@ function Page() {
           setLoading(true);
         },
         onSuccess: () => {
+          router.push("/dashboard/setting");
           setMessage("");
           setLoading(false);
           formRef.current?.reset();

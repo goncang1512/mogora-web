@@ -41,39 +41,32 @@ function SettingComponent({ account }: { account: AccountType }) {
       </div>
       <div className="flex flex-col gap-3">
         <Accordion>
-          <Accordion.Item
-            value={"item-1"}
-            className="border-b-1 border-gray-300"
-          >
+          <Accordion.Item value="item1">
             <Accordion.Trigger>
               <div className="flex items-end gap-2">
                 <User size={23} className="pb-1" /> <p>Profile</p>
               </div>
             </Accordion.Trigger>
-            <Accordion.Content>
-              <div>
-                <button
-                  onClick={() => {
-                    setOpenModal(true);
-                    setWhatEdit({ username: true, email: false });
-                  }}
-                  className="hover:bg-gray-100 w-full py-2 rounded-md text-start pl-4"
-                >
-                  Edit Username
-                </button>
-                {account?.providerId === "credential" && (
-                  <button
-                    onClick={() => {
-                      setOpenModal(true);
-                      setWhatEdit({ username: false, email: true });
-                    }}
-                    className="hover:bg-gray-100 w-full py-2 rounded-md text-start pl-4"
-                  >
-                    Edit Email
-                  </button>
-                )}
-              </div>
+            <Accordion.Content
+              onClick={() => {
+                setOpenModal(true);
+                setWhatEdit({ username: true, email: false });
+              }}
+              className="hover:bg-gray-100 pl-4 rounded-md cursor-pointer duration-100"
+            >
+              Edit Username
             </Accordion.Content>
+            {account?.providerId === "credential" && (
+              <Accordion.Content
+                onClick={() => {
+                  setOpenModal(true);
+                  setWhatEdit({ username: false, email: true });
+                }}
+                className="hover:bg-gray-100 pl-4 rounded-md cursor-pointer duration-100"
+              >
+                Edit Email
+              </Accordion.Content>
+            )}
           </Accordion.Item>
         </Accordion>
         <Button
