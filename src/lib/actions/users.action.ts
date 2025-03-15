@@ -1,16 +1,14 @@
 "use server";
-
 import prisma from "../config/prisma";
-import { getServerSession } from "../getSession";
 import { ResponseType } from "../utils/types";
 
-export const getAccountUser = async (): Promise<ResponseType> => {
+export const getAccountUser = async (
+  user_id: string
+): Promise<ResponseType> => {
   try {
-    const data = await getServerSession();
-
     const user = await prisma.account.findFirst({
       where: {
-        userId: String(data?.user?.id),
+        userId: user_id,
       },
       select: {
         id: true,
