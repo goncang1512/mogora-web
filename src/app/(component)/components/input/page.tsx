@@ -32,9 +32,9 @@ import { Input, Label } from "mogora-ui";
 export default function LabelFloating() {
   return (
     <div>
-      // Default Variant
+      // Bordered Variant
       <div className="relative flex flex-col gap-2">
-        <Input theme={"primary"} id="username" name="username" variant={"default"} placeholder=" " className="peer" />
+        <Input theme={"primary"} id="username" name="username" variant={"bordered"} placeholder=" " className="peer" />
         <Label
           htmlFor="username" className="float-[default]">
           Username
@@ -55,14 +55,15 @@ export default function LabelFloating() {
 
 const themeses = [
   "primary",
-  "success",
-  "danger",
-  "warning",
-  "info",
   "secondary",
+  "danger",
+  "success",
+  "info",
+  "warning",
+  "accent",
 ] as const;
 
-const variants = ["default", "underline"] as const;
+const variants = ["bordered", "underline"] as const;
 
 const sortedComponentsLinks = [...themeses].sort();
 const sortedVariants = [...variants].sort();
@@ -70,7 +71,7 @@ const sortedVariants = [...variants].sort();
 function InputPage() {
   const { copyToClipboard, copy } = useGlobal();
   const [theme, setTheme] = useState<(typeof themeses)[number]>("primary");
-  const [variant, setVariant] = useState<(typeof variants)[number]>("default");
+  const [variant, setVariant] = useState<(typeof variants)[number]>("bordered");
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Input</h1>
@@ -181,7 +182,7 @@ function InputPage() {
                   theme={"primary"}
                   id="username"
                   name="username"
-                  variant={"default"}
+                  variant={"bordered"}
                   placeholder=" "
                   className="peer dark:text-slate-800"
                 />
@@ -229,7 +230,7 @@ function InputPage() {
 const contentPropInput = [
   {
     prop: "variant",
-    type: `"default" | "underline"`,
+    type: `"bordered" | "underline"`,
     description: "Defines the style of the input field.",
   },
   {
@@ -239,7 +240,7 @@ const contentPropInput = [
   },
   {
     prop: "theme",
-    type: `"primary" | "secondary" | "danger" | "warning" | "success" | "info"`,
+    type: `"primary" | "secondary" | "danger" | "warning" | "success" | "info" | "accent"`,
     description: "Specifies the focus color theme of the input.",
   },
   {

@@ -25,10 +25,9 @@ export function InputFloat({
     <div className="relative flex flex-col gap-2">
       <Input
         ref={ref}
-        theme={"secondary"}
         id={name}
         name={name}
-        variant={"default"}
+        variant={"bordered"}
         value={value}
         onChange={onChange}
         placeholder=" "
@@ -60,10 +59,9 @@ export function InputFloatPassword({
     <div className="relative flex flex-col gap-2">
       <Input
         ref={ref}
-        theme={"secondary"}
         id={name}
         name={name}
-        variant={"default"}
+        variant={"bordered"}
         value={value}
         onChange={onChange}
         placeholder=" "

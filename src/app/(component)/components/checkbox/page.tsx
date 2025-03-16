@@ -28,7 +28,8 @@ const themeses = [
   "success",
   "danger",
   "warning",
-  "default",
+  "accent",
+  "info",
 ] as const;
 
 const sortedComponentsLinks = [...themeses].sort();

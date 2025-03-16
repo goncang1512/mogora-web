@@ -22,16 +22,15 @@ export default function ButtonDemo() {
 };
 
 const variants = [
-  "link",
   "primary",
-  "secondry",
+  "secondary",
   "success",
   "danger",
   "warning",
   "info",
   "outline",
   "gost",
-  "dark",
+  "link",
   "clicki",
   "shadow",
 ] as const;
@@ -43,7 +42,7 @@ const sizeSorted = [...sizes].sort();
 
 function ButtonPage() {
   const { copyToClipboard, copy } = useGlobal();
-  const [theme, setTheme] = useState<(typeof variants)[number]>("dark");
+  const [theme, setTheme] = useState<(typeof variants)[number]>("primary");
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Button</h1>

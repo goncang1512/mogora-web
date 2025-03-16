@@ -15,11 +15,11 @@ export default function TableDemo() {
   return (
     <Table variant={"${variant}"}>
       <Table.Header>
-        <Table.Row>
+        <Table.HeaderRow>
           <Table.HeaderCell>Nama</Table.HeaderCell>
           <Table.HeaderCell>Email</Table.HeaderCell>
           <Table.HeaderCell>HP</Table.HeaderCell>
-        </Table.Row>
+        </Table.HeaderRow>
       </Table.Header>
       <Table.Body>
         <Table.Row>
@@ -84,11 +84,11 @@ function TablePage() {
           {/* COMPONENT */}
           <Table className="w-md" variant={variant}>
             <Table.Header>
-              <Table.Row>
+              <Table.HeaderRow>
                 <Table.HeaderCell>Nama</Table.HeaderCell>
                 <Table.HeaderCell>Email</Table.HeaderCell>
                 <Table.HeaderCell>HP</Table.HeaderCell>
-              </Table.Row>
+              </Table.HeaderRow>
             </Table.Header>
             <Table.Body>
               <Table.Row>
@@ -161,12 +161,12 @@ const APIREFERENCES = [
       },
       {
         prop: "variant",
-        type: "'default' | 'zebra' | 'bordered'",
+        type: `"default" | "zebra" | "bordered"`,
         description: "Determines the style of the table.",
       },
       {
         prop: "size",
-        type: "'default' | 'normal'",
+        type: `"default" | "normal"`,
         description: "Defines the table size.",
       },
       {

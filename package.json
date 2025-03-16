@@ -19,7 +19,7 @@
     "better-auth": "^1.2.3",
     "jose": "^6.0.8",
     "lucide-react": "^0.475.0",
-    "mogora-ui": "^0.6.18",
+    "mogora-ui": "^0.6.22",
     "next": "^15.2.1",
     "nextjs-toploader": "^3.7.15",
     "pg": "^8.13.3",

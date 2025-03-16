@@ -186,12 +186,12 @@ const APIREFERENCES = [
       },
       {
         prop: "variant",
-        type: "'default' | 'underline'",
+        type: `"default" | "underline"`,
         description: "Determines the style of the Tabs component.",
       },
       {
         prop: "size",
-        type: "'default' | 'normal'",
+        type: `"default" | "normal"`,
         description: "Defines the size of the Tabs component.",
       },
       {

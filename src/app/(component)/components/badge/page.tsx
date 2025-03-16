@@ -21,11 +21,12 @@ export default function BadgeDemo() {
   return BadgeCode;
 };
 
-const variants = ["default", "outline", "secondary"] as const;
+const variants = ["primary", "outline", "secondary", "ghost"] as const;
+const sortedVariants = [...variants].sort();
 
 function BadgePage() {
   const { copyToClipboard, copy } = useGlobal();
-  const [theme, setTheme] = useState<(typeof variants)[number]>("default");
+  const [theme, setTheme] = useState<(typeof variants)[number]>("primary");
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Badge</h1>
@@ -70,7 +71,7 @@ function BadgePage() {
               Variants
             </Select.Trigger>
             <Select.Content>
-              {variants.map((name) => (
+              {sortedVariants.map((name) => (
                 <Select.Item
                   key={name}
                   onClick={() => setTheme(name)}
@@ -123,8 +124,8 @@ const ApiAccordion = () => {
             <Table.Row>
               <Table.Cell>variant</Table.Cell>
               <Table.Cell>
-                &quot;default&quot; | &quot;secondary&quot; |
-                &quot;outline&quot;
+                &quot;primary&quot; | &quot;secondary&quot; |
+                &quot;outline&quot; | &quot;ghost&quot;
               </Table.Cell>
               <Table.Cell>Badge appearance variants.</Table.Cell>
             </Table.Row>
@@ -143,10 +144,10 @@ const ApiAccordion = () => {
           </Table.Header>
           <Table.Body>
             <Table.Row>
-              <Table.Cell>default</Table.Cell>
+              <Table.Cell>primary</Table.Cell>
               <Table.Cell>
                 Background <HightLight>bg-primary</HightLight>, text{" "}
-                <HightLight>text-primary-foreground</HightLight>.
+                <HightLight>text-white</HightLight>.
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -160,6 +161,13 @@ const ApiAccordion = () => {
               <Table.Cell>outline</Table.Cell>
               <Table.Cell>
                 Text colored <HightLight>text-foreground</HightLight>, without a
+                background.
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>ghost</Table.Cell>
+              <Table.Cell>
+                Text colored <HightLight>text-primary</HightLight>, without a
                 background.
               </Table.Cell>
             </Table.Row>

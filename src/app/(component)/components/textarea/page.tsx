@@ -28,14 +28,15 @@ export default function TextareaDemo() {
 
 const themeses = [
   "primary",
-  "success",
-  "danger",
-  "warning",
-  "info",
   "secondary",
+  "danger",
+  "success",
+  "info",
+  "warning",
+  "accent",
 ] as const;
 
-const variants = ["default", "underline"] as const;
+const variants = ["bordered", "underline"] as const;
 
 const sortedComponentsLinks = [...themeses].sort();
 const sortedVariants = [...variants].sort();
@@ -43,7 +44,7 @@ const sortedVariants = [...variants].sort();
 function TextareaPage() {
   const { copyToClipboard, copy } = useGlobal();
   const [theme, setTheme] = useState<(typeof themeses)[number]>("primary");
-  const [variant, setVariant] = useState<(typeof variants)[number]>("default");
+  const [variant, setVariant] = useState<(typeof variants)[number]>("bordered");
   return (
     <Container>
       <h1 className="text-3xl font-semibold">Textarea</h1>
@@ -143,17 +144,17 @@ const APIREFERENCES = [
     props: [
       {
         prop: "variant",
-        type: "'default' | 'underline'",
+        type: `"bordered" | "underline"`,
         description: "Determines the styling variant of the textarea.",
       },
       {
         prop: "size",
-        type: "'small' | 'normal' | 'large'",
+        type: `"small" | "normal" | "large"`,
         description: "Defines the size of the textarea.",
       },
       {
         prop: "theme",
-        type: "'primary' | 'secondary' | 'danger' | 'warning' | 'success' | 'info'",
+        type: `"primary" | "secondary" | "danger" | "warning" | "success" | "info" | "accent"`,
         description: "Sets the focus color theme.",
       },
       {

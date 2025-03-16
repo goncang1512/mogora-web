@@ -24,7 +24,7 @@ function MobileSideBar() {
         <div className="gap-2 items-start flex flex-col pt-5">
           <Link href={"/docs"}>Docs</Link>
           <Link href="/components">Components</Link>
-          <Link href={"/"}>Template</Link>
+          <Link href={"/template"}>Template</Link>
         </div>
         {UILINKS.includes(pathaname) || pathaname.startsWith("/dashboard") ? (
           <>
