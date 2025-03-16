@@ -1,3 +1,5 @@
+import { auth } from "../auth";
+
 export type ResponseType<
   T extends Record<string, unknown> = Record<string, unknown>
 > = {
@@ -12,20 +14,9 @@ export type statusAuth = "authenticated" | "unauthenticated";
 export type UserRole = "Reguler" | "Administrator" | "Seller";
 export type StatusAccount = "Aktif" | "Banned" | "Premium";
 
-export type UserType<
-  T extends Record<string, unknown> = Record<string, unknown>
-> = {
-  id: number;
-  username: string;
-  email: string;
-  role: UserRole;
-  avatar: string;
-  avatar_id: string;
-  status: StatusAccount;
-  access_token: string;
-  created_at: Date;
-  updated_at: Date;
-} & T;
+export type UserType<T = unknown> = T extends Record<string, never>
+  ? typeof auth.$Infer.Session.user
+  : typeof auth.$Infer.Session.user & T;
 
 export type ComponentType = {
   id: string;

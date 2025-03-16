@@ -17,6 +17,7 @@
     "@uiw/codemirror-theme-vscode": "^4.23.10",
     "@uiw/react-codemirror": "^4.23.10",
     "better-auth": "^1.2.3",
+    "cloudinary": "^2.6.0",
     "jose": "^6.0.8",
     "lucide-react": "^0.475.0",
     "mogora-ui": "^0.6.22",
