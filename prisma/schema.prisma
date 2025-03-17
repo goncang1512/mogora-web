@@ -92,3 +92,5 @@ model Component {
 
   @@map("component")
 }
+
+

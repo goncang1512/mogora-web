@@ -9,7 +9,7 @@ import React, {
 import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { javascript } from "@codemirror/lang-javascript";
-import { Button } from "mogora-ui";
+import { Button, Input } from "mogora-ui";
 import { createComponent } from "@/lib/actions/component.action";
 import { useSession } from "@/lib/useSession";
 import { InputFloat } from "../fragments/input";
@@ -60,6 +60,7 @@ function CreateComponent() {
           basicSetup={{ lineNumbers: true }}
         />
         <InputFloat name="name" placeholder="Name" />
+        <Input type="file" name="layout-image" />
         <Button>{isPending ? "loading..." : "Create Component"}</Button>
       </form>
     </div>

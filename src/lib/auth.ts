@@ -1,9 +1,11 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "./config/prisma";
-import { resend } from "./resend";
 
 export const auth = betterAuth({
+  database: prismaAdapter(prisma, {
+    provider: "postgresql",
+  }),
   socialProviders: {
     discord: {
       clientId: process.env.DISCORD_CLIENT_ID as string,
@@ -14,13 +16,12 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
   },
-  database: prismaAdapter(prisma, {
-    provider: "postgresql",
-  }),
   emailAndPassword: {
     enabled: true,
+    autoSignIn: true,
   },
   user: {
+    modelName: "user",
     additionalFields: {
       role: {
         type: "string",
@@ -43,14 +44,6 @@ export const auth = betterAuth({
     },
     changeEmail: {
       enabled: true,
-      sendChangeEmailVerification: async ({ newEmail, url }) => {
-        await resend.emails.send({
-          from: "Mogo app",
-          to: newEmail,
-          subject: "Email verification",
-          html: `Click the link to verify your email: ${url}`,
-        });
-      },
     },
   },
 });
